@@ -6,7 +6,7 @@
  */
 
 // clang-format off
-#include "crtc_utils/libca_crtc_thread_utils.h"
+#include "crtc_utils/libca_crtc_utils_thread.h"
 
 #include <chrono>
 #include <thread>

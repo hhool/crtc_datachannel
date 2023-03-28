@@ -53,7 +53,6 @@ endif()
 
 # crtc_dc sub directory
 add_subdirectory(crtc_utils)
-add_subdirectory(deps/crtc_dc)
 
 # crtc_dc test
 enable_testing()

@@ -1,7 +1,7 @@
 /* @Copyright (c) 2019-2023 BJY. All rights reserved.
  * @author hhool
  * @date 2023-02-08
- * @file libca_crtc_ms_unittest.cc
+ * @file libca_crtc_dc_unittest.cc
  */
 
 // clang-format off

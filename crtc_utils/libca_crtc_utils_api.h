@@ -2,11 +2,11 @@
  * @Copyright (c) 2019-2023 BJY. All rights reserved.
  * @author hhool
  * @date 2023-03-21
- * @file libca_crtc_api_utils.h
+ * @file libca_crtc_utils_api.h
  */
 
-#ifndef CRTC_CRTC_UTILS_LIBCA_CRTC_API_UTILS_H_
-#define CRTC_CRTC_UTILS_LIBCA_CRTC_API_UTILS_H_
+#ifndef CRTC_CRTC_UTILS_LIBCA_CRTC_UTILS_API_H_
+#define CRTC_CRTC_UTILS_LIBCA_CRTC_UTILS_API_H_
 
 // clang-format off
 #include <libca_crtc_api.h>
@@ -324,4 +324,4 @@ class CRTCMediaStreamAudioTrack : public CRTCMediaStreamTrack {
 };
 }  // namespace crtc
 
-#endif  // CRTC_CRTC_UTILS_LIBCA_CRTC_API_UTILS_H_
+#endif  // CRTC_CRTC_UTILS_LIBCA_CRTC_UTILS_API_H_

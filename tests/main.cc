@@ -5,7 +5,6 @@
  */
 
 #include <libca_crtc_api.h>
-#include "crtc_utils/libca_crtc_thread_utils.h"
 #include "tests/libca_crtc_dc_unittest.h"
 #include <gtest/gtest.h>
 

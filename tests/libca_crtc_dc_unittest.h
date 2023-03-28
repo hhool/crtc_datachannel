@@ -15,7 +15,7 @@
 #include <string>
 #include <vector>
 
-#include "crtc_utils/libca_crtc_api_utils.h"
+#include "crtc_utils/libca_crtc_utils_api.h"
 #include <gtest/gtest.h>
 // clang-format on
 
