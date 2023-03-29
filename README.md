@@ -23,7 +23,16 @@ cmake -S . -B out\default -G "Visual Studio 15 2017" -A WIN32
 
 ```bash
 export LD_LIBRARY_PATH=deps/crtc_dc/mac_x64_debug
-cmake -S . -B out/default -G Xcode
+cmake -S . -B out/default -G Xcode -DCMAKE_OSX_ARCHITECTURES="x86_64"
+cmake --build out/default --config Debug -v
+./out/default/tests/Debug/crtc_dc_test
+```
+
+- `mac_arm64`
+
+```bash
+export LD_LIBRARY_PATH=deps/crtc_dc/mac_arm64_debug
+cmake -S . -B out/default -G Xcode -DCMAKE_OSX_ARCHITECTURES="arm64"
 cmake --build out/default --config Debug -v
 ./out/default/tests/Debug/crtc_dc_test
 ```

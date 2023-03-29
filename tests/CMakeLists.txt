@@ -65,11 +65,35 @@ if(MSVC)
 endif()
 
 if(APPLE)
-        if(${PROJECTNAME_ARCHITECTURE} MATCHES "x64")
+        message(STATUS "Check if the CPU is ARM")
+
+        if(${CMAKE_SYSTEM_PROCESSOR} MATCHES "arm.*" OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64.*")
+                set(IS_ARM_ISA TRUE)
+                message(STATUS "Check if the CPU is ARM - TRUE" )
+        else()
+                set(IS_ARM_ISA FALSE)
+                message(STATUS "Check if the CPU is ARM - FALSE")
+        ENDIF()
+
+        message(STATUS "CMAKE_OSX_ARCHITECTURES:${CMAKE_OSX_ARCHITECTURES}")
+
+        if(${CMAKE_OSX_ARCHITECTURES} MATCHES "x86_64")
+                set(IS_ARM_ISA false)
+        elseif(${CMAKE_OSX_ARCHITECTURES} MATCHES "arm64")
+                set(IS_ARM_ISA true)
+        endif()
+        if(NOT IS_ARM_ISA)
                 string(APPEND CRTC_LIB_PATH /mac_x64_debug)
                 string(APPEND CRTC_SO_PATH /mac_x64_debug)
                 target_link_libraries(crtc_dc_test
                         PRIVATE ${CRTC_LIB_PATH}/libcrtc_x64.so)
+                message(STATUS "x64 target")
+        else()
+                string(APPEND CRTC_LIB_PATH /mac_arm64_debu)
+                string(APPEND CRTC_SO_PATH /mac_arm64_debug)
+                target_link_libraries(crtc_dc_test
+                        PRIVATE ${CRTC_LIB_PATH}/libcrtc_arm64.so)
+                message(STATUS "arm64 target")
         endif()
 endif()
 
