@@ -19,10 +19,10 @@ target_link_libraries(GTest::GTest INTERFACE gtest_main)
 add_executable(crtc_dc_test main.cc
         libca_crtc_dc_unittest.h
         libca_crtc_dc_unittest.cc)
-        
+
 target_include_directories(crtc_dc_test PUBLIC
-${CMAKE_CURRENT_SOURCE_DIR}/..
-${CMAKE_CURRENT_SOURCE_DIR}/../deps/crtc_dc/include)
+        ${CMAKE_CURRENT_SOURCE_DIR}/..
+        ${CMAKE_CURRENT_SOURCE_DIR}/../deps/crtc_dc/include)
 
 set(CRTC_SO_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../deps/crtc_dc)
 set(CRTC_SO_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../deps/crtc_dc)
@@ -34,31 +34,42 @@ else()
         set(PROJECTNAME_ARCHITECTURE "x86")
 endif()
 
+message(STATUS "PROJECTNAME_ARCHITECTURE: ${PROJECTNAME_ARCHITECTURE}")
+
 if(MSVC)
         if("${CMAKE_BUILD_TYPE}" EQUAL "Release")
-                if(CMAKE_CL_64 OR ${PROJECTNAME_ARCHITECTURE} EQUAL "x64")
+                if(CMAKE_CL_64 OR ${PROJECTNAME_ARCHITECTURE} MATCHES "x64")
                         string(APPEND CRTC_LIB_PATH /win_x64_release)
                         string(APPEND CRTC_SO_PATH /win_x64_release)
                         target_link_libraries(crtc_dc_test
-                        PRIVATE ${CRTC_LIB_PATH}/libcrtc_x64.dll.lib)
+                                PRIVATE ${CRTC_LIB_PATH}/libcrtc_x64.dll.lib)
                 else()
                         string(APPEND CRTC_LIB_PATH /win_x86_release)
                         string(APPEND CRTC_SO_PATH /win_x86_release)
                         target_link_libraries(crtc_dc_test
-                        PRIVATE ${CRTC_LIB_PATH}/libcrtc_x86.dll.lib)
+                                PRIVATE ${CRTC_LIB_PATH}/libcrtc_x86.dll.lib)
                 endif()
         else()
-                if(CMAKE_CL_64 OR ${PROJECTNAME_ARCHITECTURE} EQUAL "x64")
+                if(CMAKE_CL_64 OR ${PROJECTNAME_ARCHITECTURE} MATCHES "x64")
                         string(APPEND CRTC_LIB_PATH /win_x64_debug/)
                         string(APPEND CRTC_SO_PATH /win_x64_debug/)
                         target_link_libraries(crtc_dc_test
-                        PRIVATE ${CRTC_LIB_PATH}/libcrtc_x64.dll.lib)
+                                PRIVATE ${CRTC_LIB_PATH}/libcrtc_x64.dll.lib)
                 else()
                         string(APPEND CRTC_LIB_PATH /win_x86_debug)
                         string(APPEND CRTC_SO_PATH /win_x86_debug)
                         target_link_libraries(crtc_dc_test
-                        PRIVATE ${CRTC_LIB_PATH}/libcrtc_x86.dll.lib)
+                                PRIVATE ${CRTC_LIB_PATH}/libcrtc_x86.dll.lib)
                 endif()
+        endif()
+endif()
+
+if(APPLE)
+        if(${PROJECTNAME_ARCHITECTURE} MATCHES "x64")
+                string(APPEND CRTC_LIB_PATH /mac_x64_debug)
+                string(APPEND CRTC_SO_PATH /mac_x64_debug)
+                target_link_libraries(crtc_dc_test
+                        PRIVATE ${CRTC_LIB_PATH}/libcrtc_x64.so)
         endif()
 endif()
 
@@ -66,6 +77,7 @@ target_link_libraries(crtc_dc_test PRIVATE crtc_utils_static GTest::GTest)
 
 add_test(tests crtc_dc_test)
 
+# set environment variable for crtc_dc_test running
 if(MSVC)
         set_target_properties(crtc_dc_test PROPERTIES VS_DEBUGGER_ENVIRONMENT "PATH=%PATH%;${CRTC_SO_PATH}")
 endif()

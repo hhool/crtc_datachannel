@@ -14,7 +14,6 @@ project(crtc_dc)
 # crtc_dc dependencies
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/crtc_dc/include)
-link_libraries(${CMAKE_CURRENT_SOURCE_DIR}/deps/crtc_dc/win_x86_debug/libcrtc_x86.dll.lib)
 
 # crtc_dc global complier settings
 if(MSVC)
@@ -49,6 +48,10 @@ if(WIN32)
     add_definitions(-D_UNICODE -DUNICODE -DNOMINMAX)
 else()
     add_definitions(-D_POSIX_)
+endif()
+
+if(APPLE)
+    add_definitions(-D__APPLE__)
 endif()
 
 # crtc_dc sub directory

@@ -13,6 +13,17 @@
 
 ## `Deploy`
 
+- `windows`
+
 ```cmd
 cmake -S . -B out\default -G "Visual Studio 15 2017" -A WIN32 
+```
+
+- `mac_x64`
+
+```bash
+export LD_LIBRARY_PATH=deps/crtc_dc/mac_x64_debug
+cmake -S . -B out/default -G Xcode
+cmake --build out/default --config Debug -v
+./out/default/tests/Debug/crtc_dc_test
 ```
