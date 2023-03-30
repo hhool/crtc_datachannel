@@ -1,8 +1,9 @@
-/* @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
+ * @file libca_crtc_api.h
  * @author hhool
  * @date 2023-02-29
- * @file libca_crtc_api.h
- * @description sdk header files
+ * @brief sdk header files
  */
 #ifndef CRTC_CRTC_API_INCLUDE_LIBCA_CRTC_API_H_
 #define CRTC_CRTC_API_INCLUDE_LIBCA_CRTC_API_H_

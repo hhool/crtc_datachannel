@@ -1,8 +1,9 @@
-/* @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
  * @author hhool
  * @date 2023-02-27
  * @file libca_peer_connection.h
- * @description peer connection c api
+ * @brief peer connection c api
  */
 
 #ifndef CRTC_CRTC_API_INCLUDE_LIBCA_PEER_CONNECTION_H_
@@ -267,111 +268,95 @@ typedef struct crtc_stats_observer {
 /*
   pc means peer_connection object.
 */
-/** @CRTC_API HANDLE crtc_pc_get_local_stream(HANDLE handle_pc, HANDLE*
- * handle_sc) 获取本地流句柄集合句柄 handle_sc (StreamCollectionInterface)
- * Accessor methods to active local streams.
+/**
+ * @brief Accessor methods to active local streams.
  * This method is not supported with kUnifiedPlan semantics. Please use
  * GetSenders() instead.
- * @param handle_ms                         句柄handle_pc
- * @param handle_sc                         结果指针地址
- * @return int                              调用成功：== 0，失败：< 0
+ * @param handle_ms                         handle handle_pc
+ * @param handle_sc                         pointer to the result
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_get_local_stream(HANDLE handle_pc, HANDLE* handle_sc);
 
-/** @CRTC_API HANDLE crtc_pc_get_remote_stream(HANDLE handle_pc, HANDLE*
-    handle_sc)
- * 获取远端流句柄集合句柄 handle_sc (StreamCollectionInterface)
- * Accessor methods to active local streams.
+/**
+ * @brief Accessor methods to active local streams.
  * This method is not supported with kUnifiedPlan semantics. Please use
  * GetSenders() instead.
- * @param handle_ms                         句柄handle_pc
- * @param handle_sc                         结果指针地址
- * @return int                              调用成功：== 0，失败：< 0
+ * @param handle_ms                         handle handle_pc
+ * @param handle_sc                         pointer to the result
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_get_remote_stream(HANDLE handle_pc, HANDLE* handle_sc);
 
-/** @CRTC_API int crtc_pc_add_stream(HANDLE handle_pc, HANDLE handle_ms)
- * 添加handle_ms 到 handle_pc
- * This method is not supported with kUnifiedPlan semantics. Please use
+/**
+ * @brief This method is not supported with kUnifiedPlan semantics. Please use
  * AddTrack instead.
- * @param handle_pc                         句柄handle_pc
- * @param handle_ms                         句柄handle_ms
- * @return int                              调用成功：== 0，失败：< 0
+ * @param handle_pc                         handle handle_pc
+ * @param handle_ms                         handle handle_ms
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_add_stream(HANDLE handle_pc, HANDLE handle_ms);
 
-/** @CRTC_API int crtc_pc_remove_stream(HANDLE handle_pc, HANDLE handle_ms)
- * 移除handle_ms 从 handle_pc
- * This method is not supported with kUnifiedPlan semantics. Please use
+/**
+ * @brief This method is not supported with kUnifiedPlan semantics. Please use
  * AddTrack instead.
- * @param handle_pc                         句柄handle_pc
- * @param handle_ms                         句柄handle_ms
- * @return int                              调用成功：== 0，失败：< 0
+ * @param handle_pc                         handle handle_pc
+ * @param handle_ms                         handle handle_ms
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_remove_stream(HANDLE handle_pc, HANDLE handle_ms);
 
-/** @CRTC_API  HANDLE crtc_pc_add_track(HANDLE handle_pc,
-                                HANDLE handle_mst,
-                                int* error)
- * 添加handle_mst 到 handle_pc
- * @param handle_pc                         句柄handle_pc
- * @param handle_mst                        句柄handle_mst
- * @param error                             错误返回地址
- * @return HANDLE                           调用成功：!0，失败：0 handle_rs
+/**
+ * @brief This method is not supported with kUnifiedPlan semantics. Please use
+ * AddTrack instead.
+ * @param handle_pc                         handle handle_pc
+ * @param handle_mst                        handle handle_mst
+ * @param error                             error code pointer address
+ * @return HANDLE                           success：!0，failed：0 handle_rs
  */
 CRTC_API HANDLE crtc_pc_add_track(HANDLE handle_pc,
                                   HANDLE handle_mst,
                                   int* error);
 
-/** @CRTC_API  HANDLE crtc_pc_remove_track(HANDLE handle_pc,
-                                HANDLE handle_mst)
- * 移除handle_rs 从 handle_pc
- * @param handle_pc                         句柄handle_pc
- * @param handle_rs                         句柄handle_rs
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief This method is not supported with kUnifiedPlan semantics. Please use
+ * AddTrack instead.
+ * @param handle_pc                         handle handle_pc
+ * @param handle_rs                         handle handle_rs
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_remove_track(HANDLE handle_pc, HANDLE handle_rs);
 
-/** @CRTC_API  int crtc_pc_create_offer(HANDLE handle_pc,
-                                const crtc_sdp_create_observer* observer,
-                                const crtc_rtc_offer_answer_options* options)
- * 发起新offer sdp
- * Create a new offer
- * @param handle_pc                         句柄handle_pc
- * @param crtc_sdp_create_observer            动作回调处理
- * @param options                           动作参数配置
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief Create a new offer
+ * @param handle_pc                         handle handle_pc
+ * @param crtc_sdp_create_observer          callback function to handle the result
+ * @param options                           options to create offer
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_create_offer(HANDLE handle_pc,
                                   const crtc_sdp_create_observer* observer,
                                   const crtc_rtc_offer_answer_options* options);
 
-/** @CRTC_API  int crtc_pc_create_answer(HANDLE handle_pc,
-                                 const crtc_sdp_create_observer* observer,
-                                 const crtc_rtc_offer_answer_options* options)
- * 对应offer发起answer sdp
- * Create an answer to an offer
- * @param handle_pc                         句柄handle_pc
- * @param crtc_sdp_create_observer            动作回调处理
- * @param options                           动作参数配置
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief Create an answer to an offer
+ * @param handle_pc                         handle handle_pc
+ * @param crtc_sdp_create_observer          callback function to handle the result
+ * @param options                           options to create answer
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_create_answer(
     HANDLE handle_pc,
     const crtc_sdp_create_observer* observer,
     const crtc_rtc_offer_answer_options* options);
 
-/** @CRTC_API  int crtc_pc_set_local_description(HANDLE handle_pc,
-                                         const crtc_sdp_set_observer* observer,
-                                         int sdp_type,
-                                         const char* session_description)
- * 设置本地sdp
- * Sets the local session description.
- * @param handle_pc                         句柄handle_pc
- * @param observer                          动作回调处理
- * @param sdp_type                          sdp 类型
- * @param session_description               sdp 内容
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief Sets the local session description.
+ * @param handle_pc                         handle handle_pc
+ * @param observer                          callback function to handle the result
+ * @param sdp_type                          sdp type
+ * @param session_description               sdp candidate
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_set_local_description(
     HANDLE handle_pc,
@@ -379,17 +364,13 @@ CRTC_API int crtc_pc_set_local_description(
     int sdp_type,
     const char* session_description);
 
-/** @CRTC_API  int crtc_pc_set_remote_description(HANDLE handle_pc,
-                                         const crtc_sdp_set_observer* observer,
-                                         int sdp_type,
-                                         const char* session_description)
- * 设置远端sdp
- * Sets the remote session description.
- * @param handle_pc                         句柄handle_pc
- * @param observer                          动作回调处理
- * @param sdp_type                          sdp 类型
- * @param session_description               sdp 内容
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief Sets the remote session description.
+ * @param handle_pc                         handle handle_pc
+ * @param observer                          callback function to handle the result
+ * @param sdp_type                          sdp type
+ * @param session_description               sdp candidate
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_set_remote_description(
     HANDLE handle_pc,
@@ -397,13 +378,9 @@ CRTC_API int crtc_pc_set_remote_description(
     int sdp_type,
     const char* session_description);
 
-/** @CRTC_API  int crtc_pc_add_ice_candidate(HANDLE handle_pc,
-                                     const char* sdp_mid,
-                                     int sdp_mline_index,
-                                     const char* ice_candidate_sdp)
- * 设置远端ice candidate
- * Provides a remote candidate to the ICE Agent.
- * @param handle_pc                         句柄handle_pc
+/**
+ * @brief Provides a remote candidate to the ICE Agent.
+ * @param handle_pc                         handle handle_pc
  * @param sdp_mid                           this is the value of the "a=mid"
                                             attribute of the candidate's
                                             m= section in SDP, which identifies
@@ -413,139 +390,122 @@ CRTC_API int crtc_pc_set_remote_description(
                                             candidate is associated with.
                                             Needed when an endpoint doesn't
                                             support MIDs.
- * @param ice_candidate_sdp                 sdp 内容
- * @return int                              调用成功：== 0，失败：< 0
+ * @param ice_candidate_sdp                 sdp candidate
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_add_ice_candidate(HANDLE handle_pc,
                                        const char* sdp_mid,
                                        int sdp_mline_index,
                                        const char* ice_candidate_sdp);
 
-/** @CRTC_API  int crtc_pc_remove_ice_candidate(HANDLE handle_pc,
-                                        const char* ice_candidate_sdp)
- * 移除远端ice candidate
- * remove the remote session description.
- * @param handle_pc                         句柄handle_pc
- * @param ice_candidate_sdp                 sdp 内容
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief remove the remote session description.
+ * @param handle_pc                         handle handle_pc
+ * @param ice_candidate_sdp                 sdp candidate
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_remove_ice_candidate(HANDLE handle_pc,
                                           const char* ice_candidate_sdp);
 
-/** @CRTC_API  int crtc_pc_signaling_state(HANDLE handle_pc,
-                                   crtc_e_signaling_state* state)
- * 获取pc signal state
- * @param handle_pc                         句柄handle_pc
+/**
+ * @brief This method is not supported with kUnifiedPlan semantics. Please use
+ * AddTrack instead.
+ * @param handle_pc                         handle handle_pc
  * @param state                             state crtc_e_signaling_state
- * @return int                              调用成功：== 0，失败：< 0
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_signaling_state(HANDLE handle_pc,
                                      crtc_e_signaling_state* state);
 
-/** @CRTC_API  int crtc_pc_ice_connection_state(HANDLE handle_pc,
-                                   crtc_e_ice_connection_state* state)
- * 获取pc ice connection state
- * @param handle_pc                         句柄handle_pc
+/**
+ * @brief This method is not supported with kUnifiedPlan semantics. Please use
+ * AddTrack instead.
+ * @param handle_pc                         handle handle_pc
  * @param state                             state crtc_e_ice_connection_state
- * @return int                              调用成功：== 0，失败：< 0
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_ice_connection_state(HANDLE handle_pc,
                                           crtc_e_ice_connection_state* state);
 
-/** @CRTC_API  int crtc_pc_peer_connection_state(HANDLE handle_pc,
-                                   crtc_e_peer_connecion_state* state)
- * 获取pc peer connection state
- * @param handle_pc                         句柄handle_pc
+/**
+ * @brief get pc ice connection state. This method is not supported with
+ *  kUnifiedPlan semantics. Please use AddTrack instead.
+ * @param handle_pc                         handle handle_pc
  * @param state                             state crtc_e_peer_connecion_state
- * @return int                              调用成功：== 0，失败：< 0
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_peer_connection_state(HANDLE handle_pc,
                                            crtc_e_peer_connecion_state* state);
 
-/** @CRTC_API  int crtc_pc_ice_gathering_state(HANDLE handle_pc,
-                                   crtc_e_ice_gathering_state* state)
- * 获取pc ice gathering state
- * @param handle_pc                         句柄handle_pc
+/**
+ * @brief get ice gathering state.
+ * @param handle_pc                         handle handle_pc
  * @param state                             state crtc_e_ice_gathering_state
- * @return int                              调用成功：== 0，失败：< 0
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_ice_gathering_state(HANDLE handle_pc,
                                          crtc_e_ice_gathering_state* state);
 
-/** @CRTC_API  int crtc_pc_get_senders(HANDLE handle_pc,
-                               HANDLE handle_rs[64],
-                               int* size)
- * 获取pc rtp sender 对象集合
- * @param handle_pc                         句柄handle_pc
- * @param handle_rs                         handle_rs 对象集合
- * @param size                              对象集合数量
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief get senders.
+ * @param handle_pc                         handle handle_pc
+ * @param handle_rs                         handle_rs array
+ * @param size                              address pointer of size
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_get_senders(HANDLE handle_pc,
                                  HANDLE handle_rs[64],
                                  int* size);
 
-/** @CRTC_API  int crtc_pc_get_receivers(HANDLE handle_pc,
-                               HANDLE handle_rs[64],
-                               int* size)
- * 获取pc rtp receiver 对象集合
- * @param handle_pc                         句柄handle_pc
- * @param handle_rr                         handle_rr 对象集合
- * @param size                              对象集合数量
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief get receivers.
+ * @param handle_pc                         handle handle_pc
+ * @param handle_rr                         handle_rr array
+ * @param size                              address pointer of size
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_get_receivers(HANDLE handle_pc,
                                    HANDLE handle_rr[64],
                                    int* size);
 
-/** @CRTC_API  int crtc_pc_get_stats(HANDLE handle_pc,
-                             const crtc_stats_observer* observer)
- * 获取pc stats 对象集合
- * @param handle_pc                         句柄handle_pc
- * @param observer                          状态回调函数
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief get stats.
+ * @param handle_pc                         handle handle_pc
+ * @param observer                          callback function of stats
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_get_stats(HANDLE handle_pc,
                                const crtc_stats_observer* observer);
 
-/** @CRTC_API  int crtc_pc_get_sender_stats(HANDLE handle_pc,
-                                    HANDLE handle_rs,
-                                    const crtc_stats_observer* observer)
- * 获取pc sender stats 对象集合
- * @param handle_pc                         句柄handle_pc
- * @param handl_rs                          句柄handl_rs
- * @param observer                          状态回调函数
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief get sender stats.
+ * @param handle_pc                         handle handle_pc
+ * @param handl_rs                          handle handl_rs
+ * @param observer                          callback function of stats
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_get_sender_stats(HANDLE handle_pc,
                                       HANDLE handle_rs,
                                       const crtc_stats_observer* observer);
 
-/** @CRTC_API  int crtc_pc_get_receiver_stats(HANDLE handle_pc,
-                                    HANDLE handle_rr,
-                                    const crtc_stats_observer* observer)
- * 获取pc receiver stats 对象集合
- * @param handle_pc                         句柄handle_pc
- * @param handl_rr                          句柄handl_rr
- * @param observer                          状态回调函数
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief get receiver stats.
+ * @param handle_pc                         handle handle_pc
+ * @param handl_rr                          handle handl_rr
+ * @param observer                          callback function of stats
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_get_receiver_stats(HANDLE handle_pc,
                                         HANDLE handle_rtp_receiver,
                                         const crtc_stats_observer* observer);
 
-/** @CRTC_API int crtc_pc_get_media_stream_track_stats(
-    HANDLE handle_pc,
-    const HANDLE handl_mst,
-    int level,
-    const crtc_stats_observer* observer)
-
- * 获取pc media_stream_track stats 对象集合
- * @param handle_pc                         句柄handle_pc
- * @param handl_mst                         句柄handl_mst
- * @param level                             信息级别
- * @param observer                          状态回调函数
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief get media stream track stats.
+ * @param handle_pc                         handle handle_pc
+ * @param handl_mst                         handle handl_mst
+ * @param level                             stats level
+ * @param observer                          callback function of stats
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_get_media_stream_track_stats(
     HANDLE handle_pc,
@@ -553,37 +513,33 @@ CRTC_API int crtc_pc_get_media_stream_track_stats(
     int level,
     const crtc_stats_observer* observer);
 
-/** @CRTC_API HANDLE crtc_pc_create_datachannel(HANDLE handle_pc,
-                                         const char label[256],
-                                         const crtc_data_channel_init* dc_init)
-
- * 创建 datachannel 数据通道
- * @param handle_pc                         句柄handle_pc
- * @param label                             label别称
- * @param dc_init                           dc 通道参数配置
- * @return int                              调用成功： !0，失败： 0
+/**
+ * @brief create datachannel.
+ * @param handle_pc                         handle handle_pc
+ * @param label                             label of datachannel
+ * @param dc_init                           dc init of datachannel
+ * @return int                              success： !0，failed： 0
  */
 CRTC_API HANDLE
 crtc_pc_create_datachannel(HANDLE handle_pc,
                            const char label[256],
                            const crtc_data_channel_init* dc_init);
 
-/** @CRTC_API int crtc_pc_close(HANDLE handle_pc)
-
- * 释放 pc 对象
- * @param handle_pc                         句柄handle_pc
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief close peer connection.
+ * @param handle_pc                         handle handle_pc
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_pc_close(HANDLE handle_pc);
 
-/** 设置handle_track对应底层wenbrtc流的帧率和码率
-
- * @param handle_pc                         peer_connection句柄
- * @param handle_track                      流句柄
- * @param max_framerate                     要设置的最大帧率
- * @param label                             要设置的最大码率
- * @param dc_init                           要设置的最小码率
- * @return int                              调用成功：== 0，失败：< 0
+/**
+ * @brief set encoding parameters by track.
+ * @param handle_pc                         peer_connectionhandle
+ * @param handle_track                      track handle
+ * @param max_framerate                     max framerate
+ * @param label                             label of datachannel
+ * @param dc_init                           min bitrate
+ * @return int                              success：== 0，failed：< 0
  */
 CRTC_API int crtc_rtc_set_encoding_parameters_by_track(HANDLE handle_pc,
                                                        HANDLE handle_track,

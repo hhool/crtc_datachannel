@@ -1,8 +1,9 @@
-/* @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
+ * @file libca_basetypes.h
  * @author hhool
  * @date 2022-09-03
- * @file libc_basetypes.h
- * @description 多平台编译相关宏定义
+ * @brief multi platform base types
  */
 #ifndef CRTC_CRTC_API_INCLUDE_LIBCA_BASETYPES_H_
 #define CRTC_CRTC_API_INCLUDE_LIBCA_BASETYPES_H_

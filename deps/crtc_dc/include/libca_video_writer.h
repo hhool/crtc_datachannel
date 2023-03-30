@@ -1,8 +1,9 @@
-/* @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
+ * @file libca_video_writer.h
  * @author hhool
  * @date 2023-02-28
- * @file libca_video_writer.h
- * @description video writer c api
+ * @brief video writer c api
  */
 
 #ifndef CRTC_CRTC_API_INCLUDE_LIBCA_VIDEO_WRITER_H_
@@ -57,21 +58,14 @@ CRTC_API
 int crtc_vs_cap_set_observer(HANDLE handle, crtc_vs_cap_observer* callback);
 
 /**
- * @CRTC_API HANDLE crtc_vs_cap_create(HANDLE handle_crtc,
-                                 int width,
-                                 int height,
-                                 crtc_video_type video_type,
-                                 crtc_video_frame_rate frame_rate);
- * 创建图像数据写入句柄
- * @param[in] handle_crtc                   引擎实例句柄
- * @param[in] width                         视频分辨率 宽
- * @param[in] height                        视频分辨率 高
- * @param[in] video_type                    视频格式类型
- * @param[in] frame_rate                    视频帧率
- * @param[in] is_screen                     !0：桌面采集, 0：非桌面采集
- * @return HANDLE                           创建成功 (>0)
- * 返回值为创建的实例句柄,
- *                                          <=0 创建失败
+ * @brief create image writer handle
+ * @param handle_crtc                   handle handle_cap
+ * @param width                         image width
+ * @param height                        image height
+ * @param video_type                    image type
+ * @param frame_rate                    image frame rate
+ * @param is_screen                     !0：screen  , 0：camera
+ * @return HANDLE                       success：> 0，failed：<= 0
  */
 CRTC_API HANDLE crtc_vs_cap_create(HANDLE handle_crtc,
                                    int width,
@@ -81,18 +75,14 @@ CRTC_API HANDLE crtc_vs_cap_create(HANDLE handle_crtc,
                                    int is_screen);
 
 /**
- * @int crtc_vs_cap_write(HANDLE handle_cap,
- *                        const void* data,
- *                        const int len,
- *                        long long time_ms)
- * 写入图像数据
- * @param[in] handle_cap                    实例句柄
- * @param[in] data                          图像数据
- * @param[in] len                           图像数据长度
- * @param[in] in_width                      图像数据宽
- * @param[in] in_height                     图像数据高
- * @param[in] time_ms                       图像数据被采集到时的毫秒时间
- * @return int                              写入成功(==0), <0 写入失败.
+ * @brief write image data
+ * @param handle_cap                    handle handle_cap
+ * @param data                          data of image
+ * @param len                           length of image data
+ * @param in_width                      width of image
+ * @param in_height                     height of image
+ * @param time_ms                       time_ms of image data
+ * @return int                          success：0，failed：< 0
  */
 CRTC_API int crtc_vs_cap_write(HANDLE handle_cap,
                                const void* data,
@@ -102,22 +92,20 @@ CRTC_API int crtc_vs_cap_write(HANDLE handle_cap,
                                long long time_ms);
 
 /**
- * @void crtc_vs_cap_destroy(HANDLE handle_cap)
- * 销毁图像写入
- * @param[in] capturer                  实例句柄
- * @return                              无
+ * @brief destroy image writer handle
+ * @param handle_cap                   handle handle_cap
+ * @return void
  */
 CRTC_API void crtc_vs_cap_destroy(HANDLE handle_cap);
 
 /**
- * @int crtc_vs_cap_update_max_framerate(HANDLE handle_cap, int max_framerate)
- * 更新采集源的最大采集帧率
- * @param[in] handle_cap                采集源的实例句柄
- * @param[in] max_framerate             要更新的最大帧率
- * @return int                          成功(==0), <0 失败.
+ * @brief update max framerate of image writer handle
+ * @param handle_cap                handle handle_cap
+ * @param max_framerate             max frame_rate
+ * @return int                      success：0，failed：< 0
  */
 CRTC_API int crtc_vs_cap_update_max_framerate(HANDLE handle_cap,
-                                              int max_framerate);
+                                              int max_frame_rate);
 
 #ifdef __cplusplus
 }

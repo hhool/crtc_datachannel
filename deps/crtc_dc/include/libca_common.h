@@ -1,8 +1,9 @@
-/* @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
+ * @file libca_common.h
  * @author hhool
  * @date 2023-02-27
- * @file libca_common.h
- * @description 动态库封装相关宏定义
+ * @brief dynamic library encapsulation related macro definition
  */
 #ifndef CRTC_CRTC_API_INCLUDE_LIBCA_COMMON_H_
 #define CRTC_CRTC_API_INCLUDE_LIBCA_COMMON_H_

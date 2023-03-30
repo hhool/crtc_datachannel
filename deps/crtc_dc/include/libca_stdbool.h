@@ -1,7 +1,9 @@
-/* @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
+ * @file libca_stdbool.h
  * @author hhool
  * @date 2022-09-03
- * @file libc_stdbool.h
+ * @brief stdbool.h for c
  */
 #ifndef CRTC_CRTC_API_INCLUDE_LIBCA_STDBOOL_H_
 #define CRTC_CRTC_API_INCLUDE_LIBCA_STDBOOL_H_

@@ -1,8 +1,9 @@
-/* @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
  * @author hhool
  * @date 2023-02-20
  * @file libca_video_codec.h
- * @description video codec c api
+ * @brief video codec c api
  */
 
 #ifndef CRTC_CRTC_API_INCLUDE_LIBCA_VIDEO_CODEC_H_
