@@ -1,5 +1,5 @@
-/*
- * @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
  * @author hhool
  * @date 2023-03-06
  * @file ibca_crtc_thread_utils.cc

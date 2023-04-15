@@ -1,5 +1,5 @@
-/*
- * @Copyright (c) 2019-2023 BJY. All rights reserved.
+/**
+ * @copyright (c) 2019-2023 BJY. All rights reserved.
  * @author hhool
  * @date 2023-03-21
  * @file libca_crtc_utils_api.cc
